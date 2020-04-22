@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v0.16.70/---simulator","cdnUrl":"https://pxt.azureedge.net","version":"0.0.1","target":"arcade","targetVersion":"0.16.70","repo":"pelikhan/arcade-clock"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v0.16.70/---simulator","cdnUrl":"https://pxt.azureedge.net","version":"0.0.2","target":"arcade","targetVersion":"0.16.70","repo":"pelikhan/arcade-clock"}
 // total=1160388 new=7.41% cached=87.04% other=5.55%
 (function (ectx) {
 'use strict';
@@ -384,7 +384,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P191915(s) {
+function _main___P191932(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -770,13 +770,13 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-_main___P191915.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"test.ts","functionName":"<main>","argumentNames":[]}
-_main___P191915.continuations = [  ]
+_main___P191932.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"test.ts","functionName":"<main>","argumentNames":[]}
+_main___P191932.continuations = [  ]
 
-function _main___P191915_mk(s) {
+function _main___P191932_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P191915, depth: s.depth + 1,
+        parent: s, fn: _main___P191932, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -5279,8 +5279,8 @@ switch (step) {
 
     s.cleared___179099 = undefined;
     s.sc___179101 = undefined;
-    s.unnamed3448___U2 = undefined;
-    s.unnamed3449___U3 = undefined;
+    s.unnamed3452___U2 = undefined;
+    s.unnamed3453___U3 = undefined;
     s.h___179111 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
@@ -5292,15 +5292,15 @@ switch (step) {
     s.cleared___179099 = (false);
     s.sc___179101 = (undefined);
     r0 = s.arg0.fields["schedules"];
-    s.unnamed3448___U2 = (r0);
-    s.unnamed3449___U3 = (0);
+    s.unnamed3452___U2 = (r0);
+    s.unnamed3453___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed3449___U3;
-    r0 = pxsim_Array__length(s.unnamed3448___U2);
+    s.tmp_0 = r0 = s.unnamed3453___U3;
+    r0 = pxsim_Array__length(s.unnamed3452___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3448___U2, s.unnamed3449___U3);
+    r0 = pxsim_Array__getAt(s.unnamed3452___U2, s.unnamed3453___U3);
     s.sc___179101 = (r0);
     r0 = s.sc___179101.fields["handler"];
     s.tmp_2 = r0;
@@ -5329,11 +5329,11 @@ switch (step) {
     r0 = s.retval;
   case 4:
   case 5:
-    r0 = (s.unnamed3449___U3 + 1);
-    s.unnamed3449___U3 = (r0);
+    r0 = (s.unnamed3453___U3 + 1);
+    s.unnamed3453___U3 = (r0);
     { step = 1; continue; }
   case 6:
-    s.unnamed3448___U2 = (undefined);
+    s.unnamed3452___U2 = (undefined);
     r0 = pxsim_numops_toBoolDecr(s.cleared___179099);
     if (!r0) { step = 7; continue; }
     s.tmp_0 = r0 = s.arg0;
@@ -5366,8 +5366,8 @@ function game_ClockData_update__P179089_mk(s) {
   tmp_4: undefined,
   cleared___179099: undefined,
   sc___179101: undefined,
-  unnamed3448___U2: undefined,
-  unnamed3449___U3: undefined,
+  unnamed3452___U2: undefined,
+  unnamed3453___U3: undefined,
   h___179111: undefined,
   arg0: undefined,
   arg1: undefined,
@@ -40425,5 +40425,5 @@ const tiles_Location__C176466_VT = mkVTable({
 
 const breakpoints = setupDebugger(1, ["projectile___191028","mySprite___191034","CLOCK_DATA___179081"])
 
-return _main___P191915
+return _main___P191932
 })
