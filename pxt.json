@@ -5,7 +5,6 @@
         "device": "*"
     },
     "files": [
-        "main.ts",
         "README.md",
         "clock.ts"
     ],

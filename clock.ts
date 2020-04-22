@@ -1,4 +1,4 @@
-namespace clock {
+namespace game {
     const CLOCK_DATA = "clock_data"
     class Schedule {
         handler: () => void;
@@ -54,9 +54,11 @@ namespace clock {
      * Schedule code to be run after a delay.
      */
     //% group="Gameplay" weight=10
-    //% blockId="gameschedule" block="schedule after $delay"
-    export function scheduleUpdate(delay: number, unique: boolean, a: () => void) {
-        if (!a || delay < 0) return;
+    //% blockId="gameschedule" block="schedule update unique $unique after $delay (ms)"
+    //% unique.shadow=toggleYesNo
+    //% delay.shadow=timePicker
+    export function scheduleUpdate(unique: boolean, delay: number, handler: () => void) {
+        if (!handler || delay < 0) return;
 
         const sc = game.currentScene();
         let data = sc.data[CLOCK_DATA] as ClockData;
@@ -70,6 +72,6 @@ namespace clock {
         }
 
         // schedule it
-        data.schedule(a, unique, sc.millis() + delay);
+        data.schedule(handler, unique, sc.millis() + delay);
     }
 }
