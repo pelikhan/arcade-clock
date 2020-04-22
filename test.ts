@@ -17,7 +17,9 @@ b 5 5 5 5 d d 4 4 4 4 . . . . .
 4 d d d 4 4 4 . . . . . . . . . 
 4 4 4 4 . . . . . . . . . . . . 
 `, mySprite, 50, 0)
+    mySprite.say("hold it", 500)
     game.runOnUpdateAfter(1000, function () {
+        mySprite.say("gone!", 500)
         projectile.destroy()
     })
 })
