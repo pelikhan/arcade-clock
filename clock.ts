@@ -1,8 +1,10 @@
 namespace game {
     const CLOCK_DATA = "clock_data"
     class Schedule {
-        handler: () => void;
-        time: number; // time in millisecond when the schedule triggers
+        constructor(
+            public handler: () => void, 
+            public time: number) {
+        }
     }
     class ClockData {
         // we need to recycle schedules because we can't unregister them...
@@ -12,54 +14,34 @@ namespace game {
         }
 
         update(time: number) {
+            let cleared = false;
             for(const sc of this.schedules) {
                 if (sc.handler && time >= sc.time) {
                     const h = sc.handler;
                     sc.handler = undefined;
+                    cleared = true;
                     h();
                 }
             }
+            // delete unused schedulers
+            if (cleared)
+                this.schedules = this.schedules.filter(sc => !!sc.handler);
         }
 
-        private findSchedule(a: () => void): Schedule {
-            for (const sc of this.schedules) {
-                if (sc.handler == a)
-                    return sc;
-            }
-            return undefined;
-        }
-
-        private allocSchedule(): Schedule {
-            for (const sc of this.schedules) {
-                if (!sc.handler)
-                    return sc;
-            }
-            const nsc = new Schedule();
-            this.schedules.push(nsc);
-            return nsc;
-        }
-
-        schedule(handler: () => void, unique: boolean, time: number) {
-            let sc: Schedule = undefined;
-            if(unique)
-                sc = this.findSchedule(handler);
-            if (!sc)
-                sc = this.allocSchedule();
-            sc.handler = handler;
-            sc.time = time;
+        schedule(handler: () => void, time: number) {
+            this.schedules.push(new Schedule(handler, time));
         }
     }
 
     /**
-     * Schedule code to be run after a delay.
+     * Schedule code to be run after a delay on game update.
      */
     //% group="Gameplay" weight=10
-    //% blockId="gameschedule" block="schedule update unique $unique after $delay (ms)"
-    //% unique.shadow=toggleYesNo
+    //% blockId="gameschedule" block="run on game update after $delay (ms)"
     //% delay.shadow=timePicker
-    export function scheduleUpdate(unique: boolean, delay: number, handler: () => void) {
+    //% handlerStatement=1 weight=81
+    export function runOnUpdateAfter(delay: number, handler: () => void) {
         if (!handler || delay < 0) return;
-
         const sc = game.currentScene();
         let data = sc.data[CLOCK_DATA] as ClockData;
         if (!data) {
@@ -72,6 +54,6 @@ namespace game {
         }
 
         // schedule it
-        data.schedule(handler, unique, sc.millis() + delay);
+        data.schedule(handler, sc.millis() + delay);
     }
 }
